@@ -1,5 +1,16 @@
 1. setup java jdk 6 and jdk 7
+intellij guideline
 
+
+#########
+mary's stash
+http://awsbuild02.dc.thestreet.com:7990/projects
+
+mine stash
+http://awsbuild02.dc.thestreet.com:7990/projects/CMS/repos/contributor-desk/browse?at=refs%2Fheads%2Fdevelop
+
+
+########
 
 2. install gvm: goto http://gvmtool.net/
 step by step:
@@ -9,7 +20,8 @@ use, default, current, install,
 
 
 
-3
+3. setup path for mac
+http://coolestguidesontheplanet.com/add-shell-path-osx/
 
 
 
