@@ -23,6 +23,13 @@ use, default, current, install,
 3. setup path for mac
 http://coolestguidesontheplanet.com/add-shell-path-osx/
 
+!!!!!!!!
+########################
+CONFIGURE JAVA_HOME OR GRAILS_HOME
+printenv
+
+#######################
+save all work log of grails:
 
 
 4. setup vbox
