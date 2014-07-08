@@ -19,3 +19,12 @@ virtualbox-4.3.12-93733-osx
 5. download ubuntu 14.4 to run as vm   username zihanwang, thestreet
 change window size: use terminal, command: sudo apt-get install virtualbox-guest-dkms
 
+6. install oracle 11g express on ubuntu,
+http://meandmyubuntulinux.blogspot.com/2012/05/installing-oracle-11g-r2-express.html
+
+if facing to problems about configure
+http://meandmyubuntulinux.blogspot.com/2012/06/trouble-shooting-oracle-11g.html
+
+7. connect java eclipse and intellij with jdbc oracle
+
+
