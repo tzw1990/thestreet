@@ -30,6 +30,9 @@ printenv
 
 #######################
 save all work log of grails:
+in 'Documents/Works/GrailsFolder' use: grails create-app demo
+cd to demo, grails run-app
+
 
 
 4. setup vbox
