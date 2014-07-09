@@ -50,3 +50,7 @@ http://meandmyubuntulinux.blogspot.com/2012/06/trouble-shooting-oracle-11g.html
 7. connect java eclipse and intellij with jdbc oracle
 
 
+8. change localhost and save cookies:
+sudo vi /etc/hosts
+edit:127.0.0.1       localhost
+to:127.0.0.1       localhost localhost.thestreet.com
