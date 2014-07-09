@@ -54,3 +54,8 @@ http://meandmyubuntulinux.blogspot.com/2012/06/trouble-shooting-oracle-11g.html
 sudo vi /etc/hosts
 edit:127.0.0.1       localhost
 to:127.0.0.1       localhost localhost.thestreet.com
+
+9,find and kill port
+lsof -i :3000
+kill -9 <PID>
+
