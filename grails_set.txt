@@ -1,0 +1,20 @@
+http://confluence.dc.thestreet.com/display/TSTAPPS/Home
+
+cd to the destination folder
+cd into it
+grail upgrade
+grail compile
+grail integrate-with --intellij
+open c....ipr
+
+in intellij, right hand, select project structure, choose java 1.7 and 7.0 support
+
+chose different git repostory, not master.
+in intellij, choose git, set orgin/develop checkout as new local branch
+
+command-k  commit changes
+command-t push to remote
+
+
+
+
