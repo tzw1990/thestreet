@@ -1,0 +1,5 @@
+New tech gained:
+Groovy
+Grails
+GVM
+Apache Velocity
