@@ -5,5 +5,10 @@ the routine for the street
 
 new tech is used everyday in thestreet!
 
--Apache Velocity
+-Maven
 
+-Grails
+
+-Apache Velocity  -> FreeMarker follows
+
+-Apache 
