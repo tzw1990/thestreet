@@ -1,0 +1,9 @@
+<html>
+<title>Hello Velocity</title>
+#set ($name = "admin")
+<body>
+Welcome $name to Javayou.com!
+today is $date.
+<p>$list[1]</p>
+</body>
+</html>
