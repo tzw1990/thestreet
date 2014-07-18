@@ -1,0 +1,23 @@
+<html>
+<title>Hello Velocity</title>
+#set ($name = "admin")
+<body>
+Welcome $name to Javayou.com!
+today is $date.
+<p>$list.get(1).name</p>
+</body>
+</html>
+
+#foreach ($element in $list)
+-- inner foreach --
+    #foreach ($element in $list)
+This is $element.
+        $velocityCount
+    #end
+-- inner foreach --
+-- outer foreach --
+This is $element.
+    $velocityCount
+-- outer foreach --
+
+#end
