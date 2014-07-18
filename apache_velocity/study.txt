@@ -1,0 +1,8 @@
+Use apache velocity 1.7
+
+1. http://tech.163.com/04/1230/03/18QP3L080009159J.html
+2. http://www.yanyulin.info/pages/2014/03/velocity_disabuse_1.html
+
+3. $ for parameters and $list[0] for list numbers
+
+3. #set, #if, #else, #end, #foreach( in ), 
