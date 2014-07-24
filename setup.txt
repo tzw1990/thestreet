@@ -23,6 +23,11 @@ use, default, current, install,
 3. setup path for mac
 http://coolestguidesontheplanet.com/add-shell-path-osx/
 
+vim .bash_profile
+echo $PATH
+./mongod -f ../etc/mongo.conf
+
+
 !!!!!!!!
 ########################
 CONFIGURE JAVA_HOME OR GRAILS_HOME
