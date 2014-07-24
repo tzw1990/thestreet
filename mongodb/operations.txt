@@ -1,0 +1,240 @@
+###########################################################################
+lesson two
+#mongo.conf
+logpath=../log/mongodb.log
+logappend=false
+dbpath=../data/db
+fork=true
+rest = true
+
+#start mongod
+./mongod -f ../etc/mongo.conf --smallfiles --journal
+
+#check the children process in the back
+ps -ef|grep mongod
+
+#two ports need to remember: 28017 and 27017
+#28017 is for internet connect
+
+
+#connect to local host
+telnet localhost 27017
+
+#view log at any time:
+tail -f mongodb.log
+
+#if you have other config for the mongod, the shutdown process is different
+./mongod --shutdown --dbpath=../data/db
+
+############################################################################
+lesson three
+#mongo shell:
+./mongo --port 27017
+
+#link other host
+./mongo --host
+
+********mongo shell
+#show the database
+show dbs
+
+#use admin database (instead of test)
+use admin
+
+#collections
+show collections
+
+#users
+show users
+
+#new dbs, all create and see the dbs by show dbs
+use dbname
+use test2
+
+#create collections
+db.account.save({'name':'test','addr':'homw'})
+
+#see the collectios in a dbs
+db.account.find()
+
+#drop the current db
+db.dropDatabase()
+
+#drop the collection
+db.account.drop()
+
+#use help all the time!
+
+********************************
+
+#mongodb's data tools
+#database conpoents: mongod, mongos and mongo
+#database tool: mongodump, mongorestore
+mongodump -h dbhost -d dbname -o dbdirectory
+mongorestore -h dbhost -d dbame --directoryperdb dbdirectory
+#see bson object:
+./bsondump dump/test2/account.bson
+
+#mongoexport and mongoimport
+./mongoexport -d bbs -c account -q {} -f name,addr --csv >account.csv
+./mongoexport -d bbs -c account -q {} -f ame,add > account.json
+./mongoexport -d bbs -c account -q '{"name":"test2"}' --csv > account.csv
+
+./mongoimport -d chacha -c account --type csv --headerline --drop <account.csv
+./mongoimport -d chacha -c account --type json --drop < account.json
+
+#####################################################################
+lesson four
+#file, collection, and database  ->data record, table without format, database
+command 'it' to show more
+db.account.count()
+
+#system remain database
+admin:after 2.4, it's gone.
+local:the data will not be copy. if you dont want sth to be copied.
+config:store slice information
+
+#name space:
+such as test2.account
+
+#########################################################################
+lesson five
+#JSON DATA format
+string, number, object, array, true,false and null
+
+#mongodb has more data types:
+null, true,false, int, float, string, _id, date, symble(will convert to string)
+
+"id" = ObjectID()
+"new_date" = new date()
+"date" = new Timestamp()
+
+#also:
+regex following javascript ("foo":/foobar/i)
+javascript syntax can be used in mongodb: EXAMPLE  "x":function(){}
+bytecode
+max (bson)
+min (bson)
+undefined    example  "x":undefined
+array  example  "x":["a","b"] 
+file (can be another key's value) "x":{"boo":"bar"}
+
+########################################################################
+lesson six
+#operations on file
+db.account.count()
+db.account.remove()
+db.account.insert({"":""})
+db.account.drop()
+db.account.remove({"":""})
+db.account.update({"search from "},{"update to"})
+#use $set, update the existing key-value or adding
+db.account.update({"_id":"1",{"$set":{"passwd":"d"}}})
+#$unset, delete the key-value
+db.account.update({"_id":"1",{"$unset":{"passwd":"d"}}})
+#$inc, add a new key-value, or add the number to the value, -1 is decrease
+db.account.update({"_id":"1",{"$inc":{"age":30}}})
+#$push, will be pushed into a array with the same key
+db.account.update({"_id":"1",{"$push":{"passwd":"dddd"}}})
+#$addToSet, like $push but if the array already has the value
+#$pop, just like $push
+#$pull can delete the element at a sepecific position
+
+#multi files update:
+db.account.update({"_id":"1",{"$set":{"passwd":"d"}},false,true})
+
+#view update result:
+db.runCommand({getLastError:1})
+
+#WriteConcern,None or SAFE
+
+#######################################################################
+lesson seven
+db.account.find()
+#return some keys not all
+db.account.find({},{"userName":1,"passwd":1})   #1 means return this value, 0 means do not return this value
+db.account.find({},{"userName":1,"_id":0}) 
+
+#multi search
+lt, lte, gt, gte, ne  => <, <=, >, >=, !=
+
+start = new Date()  #declare a new parameter
+db.account.insert({"uname":"bbs","age":42,"time":newDate})
+db.account.find({"time":"$gt":start})
+db.account.find({"age":"$gt":30, "lt":40})
+db.account.find({"age":"ne":30})
+#use in: and use not in: $nin
+db.account.find({"age":{"$in":[30,32]}})
+#or $or
+db.accoung.find({"$or":[{"":""},{"":""}]})
+db.accoung.find({"$or":[{"username":"aa"},{"age":{"$in":[30,32]}}]})
+#$not can be used on any condition
+db.account.find({"age":{"$not":{"$nin":[30,32]}}})
+#$mod
+db.account.find({"age":{"$mod":[5,0]}})
+
+######################################################################
+lesson eight
+#null
+not only equals to null, but also for the non-existance data
+db.account.find({"createTime":null})
+
+#use $exist to find only the null file
+do.account.find({"create":{"$in":[null],"$exists":true}})
+
+#regex:(follow javascript rull)
+db.account.find({"userName":/bbs200000/i})
+
+#$all, designed for array value
+db.food.find({"fruit":{$all:["apple","peach"]}})
+
+#subset, size
+db.food.find({"fruit.2":"apple"})
+db.food.find({"fruit":{"$size":3}})
+
+#change file structure
+db.account.update({},{"$set":{"":""}})
+
+#find file by single part
+#{"userName":{"first":1,"second":2}}
+db.account.find({"userName.first":"joe","userName.last":"schome"})
+
+#$elemMatch
+
+#######################################################################
+lesson nine
+#where,but very slow,bson to javascript
+db.food.find({"$where":function(){for(var current in this){for(var other in this){if(current!=other&&this[current]==this[other]){return true;}}}return false;}});
+
+#cursor
+for(i=0;i<100;i++){db.acc.insert({x:i});]
+var cursor = db.c.fid()
+#cursor iterator
+while(cursor.hasNext()){obj = cursor.next()}
+#will return data 4m or 100results(smaller one)
+
+#db.c.find().limit(5)
+#db.c.find().skip(5)
+#db.c.find().sort({x:-1})
+db.c.find().sort({x:1})
+#db.account.find().sort({userName:1,age:-1})
+
+#divide pages
+for(i=0;i<100;i++){db.c.insert({x:i,y:'post'})}
+db.c.find({"y":"post"}).limit(20).sort([x:1])
+db.c.find({"y":"post"}).skip(20).limit(20).sort([x:1])
+
+if want to divide page without skip, see LoginTokenDAO.java getPate method
+
+#########################################################################
+lesson ten
+#ensureIndex
+for(i=0;i<10000;i++){
+db.account.insert({userName:"bbs"+i,age:i%60,createTime:newDate()});}
+
+#single key index:
+db.account.ensureIndex({"userName":1})
+#multi key index:
+15'
+
+
