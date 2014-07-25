@@ -66,3 +66,15 @@ kill -9 <PID>
 
 10. telnet 1.1.1.1
 
+11. install homebrew 
+from http://brew.sh/
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+brew doctor
+
+12. use brew to install mongodb
+http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+brew update
+brew install mongodb
+
+
