@@ -12,3 +12,7 @@ new tech is used everyday in thestreet!
 -Apache Velocity  -> FreeMarker follows
 
 -Apache 
+
+-Angular JS and Karma, Protractor for test
+
+
