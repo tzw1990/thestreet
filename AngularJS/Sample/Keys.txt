@@ -1,0 +1,6 @@
+1. MVC
+2. ng-controller
+3. ng-repeat
+4. {{variable}}
+5. ng-app  -- Module
+6. 
