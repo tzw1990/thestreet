@@ -4,4 +4,5 @@ mvn archetype:generate -DgroupId={project-packaging} -DartifactId={project-name}
 2. link it with eclipse: in the project folder
 mvn eclipse:eclipse
 
-3. 
+3. maven work with eclipse
+http://www.mkyong.com/maven/how-to-create-a-java-project-with-maven/
